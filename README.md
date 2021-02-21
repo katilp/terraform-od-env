@@ -79,6 +79,9 @@ To clean up, one would the delete the resources in the both directories
   terraform destroy
   ```
   
+The persistent volume claim and the disk need to be deleted separately from the gcloud CLI or the GPC console GUI.   
+
+  
 ## Setup from a local terminal
 
 ### Install
@@ -118,7 +121,7 @@ The provisioning of of the Kubernetes cluster and the disk is taken care in the 
 - Compute engine API
 - Kubernetes engine API (this has a cost of 0.10USD/hour)
 
-Initialise Terraform, check and apply the configurations.
+Initialise Terraform, check and apply the configurations:
 
   ```
   cd terraform-od-env/provision-gke-cluster
@@ -127,13 +130,22 @@ Initialise Terraform, check and apply the configurations.
   terraform apply
   ```
   
-  The GKE resources can be monitored through the GPC console web GUI, or on the cloud shell which opens from the web GUI after having done
+  The GKE resources can be accessed and monitored through the GPC console web GUI, or on the cloud shell which opens from the web GUI after having done
+  
   ```
   gcloud container clusters get-credentials cms-opendata-gke --zone europe-west6-a --project cms-opendata
   ```
+  
   or locally after having configured kubectl with
+  
   ``` 
   gcloud container clusters get-credentials $(terraform output -raw kubernetes_cluster_name) --region $(terraform output -raw region)
+  ```
+
+Add the disk manually with
+
+  ```
+  gcloud compute disks create --size=100GB --zone=europe-west6-a gce-nfs-disk
   ```
 
 The kubernetes resources are managed separately in the `manage-k8s-resources` directory.
@@ -145,13 +157,22 @@ The kubernetes resources are managed separately in the `manage-k8s-resources` di
   terraform apply
   ```
   
-For the moment, the resource deployment fails because it does not find the disk, and the `nfs-server` workload needs to deleted manually.
+Create the persistent volume claim needs to be done separately from the local terminal or in the cloud shell:
 
-Normally, to clean up, one would the delete the resources in the both directories
+  ```
+  kubectl apply -n argo -f pvc.yaml
+  ```
+  
+Do the testing as indicated above.  
+
+Delete the resources in the both directories
 
   ```
   terraform destroy
   cd ../provision-gke-cluster
   terraform destroy
   ```
+  
+The persistent volume claim and the disk need to be deleted separately from the gcloud CLI or the GPC console GUI.   
+  
   
