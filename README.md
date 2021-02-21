@@ -9,7 +9,7 @@ The manual environment setup is documented in
 ## Setup through the Google cloud shell
 
 
-[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://ssh.cloud.google.com/cloudshell/editor?cloudshell_git_repo=http://github.com/katilp/terraform-od-env.git)
+[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://ssh.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/katilp/terraform-od-env.git)
 
 
 
