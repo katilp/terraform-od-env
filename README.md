@@ -26,7 +26,11 @@ Initialise Terraform, check and apply the configurations.
   terraform plan 
   terraform apply
   ```
-  
+Get credentials to the newly created cluster
+
+  ```
+  gcloud container clusters get-credentials cms-opendata-gke --zone europe-west6-a --project cms-opendata
+  ```
 While in principle the disk could be created at this stage, in practice, it has to be done separately, by hand. Otherwise the deployments trying to access that disk fail. Creat the disk in the cloud shell:
 
   ```
