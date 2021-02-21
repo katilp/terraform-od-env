@@ -6,9 +6,14 @@ The manual environment setup is documented in
 - the CMS Open data workshop [slides](https://indico.cern.ch/event/882586/contributions/4042623/attachments/2114732/3557845/Open_Data_on_Kubernetes.pdf)
 - in the cloud computing [tutorial](https://cms-opendata-workshop.github.io/workshop-lesson-kubernetes/)
 
-## Through Google cloud shell
+## Setup through the Google cloud shell
 
-## From a local terminal
+
+[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://ssh.cloud.google.com/cloudshell/editor?cloudshell_git_repo=http://github.com/katilp/terraform-od-env.git)
+
+
+
+## Setup from a local terminal
 
 ### Install
 
