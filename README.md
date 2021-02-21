@@ -7,6 +7,7 @@ The manual environment setup is documented in
 - in the cloud computing [tutorial](https://cms-opendata-workshop.github.io/workshop-lesson-kubernetes/)
 
 Install Terraform (see the details in [the Terraform guide](https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started)):
+
   ```
   curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
   sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
@@ -44,9 +45,9 @@ The provisioning of of the Kubernetes cluster and the disk is taken care in the 
   terraform apply
   ```
   
-  The GKE resources can be accessed through the GPC console web GUI, or on the cloud shell which opens from the web GUI after having done
+  The GKE resources can be monitored through the GPC console web GUI, or on the cloud shell which opens from the web GUI after having done
   ```
-  gcloud container clusters get-credentials <CLUSTER> --zone <ZONE> --project <PROJECT>
+  gcloud container clusters get-credentials cms-opendata-gke --zone europe-west6-a --project cms-opendata
   ```
   or locally after having configured kubectl with
   ``` 
