@@ -16,7 +16,7 @@ Login with your GCP credentials and confirm the repository. Define the project i
 ```
 gcloud config set project cms-opendata
 ```
-The provisioning of of the Kubernetes cluster and the disk is taken care in the `provision-gke-cluster` directory.
+The provisioning of of the Kubernetes cluster is taken care in the `provision-gke-cluster` directory.
 
 Initialise Terraform, check and apply the configurations.
 
@@ -26,6 +26,13 @@ Initialise Terraform, check and apply the configurations.
   terraform plan 
   terraform apply
   ```
+  
+While in principle the disk could be created at this stage, in practice, it has to be done separately, by hand. Otherwise the deployments trying to access that disk fail. Creat the disk in the cloud shell:
+
+  ```
+  gcloud compute disks create --size=100GB --zone=europe-west6-a gce-nfs-disk
+  ```
+
 The kubernetes resources are managed separately in the `manage-k8s-resources` directory.
 
   ```
