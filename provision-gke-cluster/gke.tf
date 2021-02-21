@@ -83,10 +83,10 @@ resource "google_container_node_pool" "primary_nodes" {
 
 }
 
-resource "google_compute_disk" "default" {
-  name    = "gce-nsf-disk"
-  zone    = var.region # from variables
-  size    = 100
-}
+# resource "google_compute_disk" "default" {
+#   name    = "gce-nsf-disk"
+#   zone    = var.region # from variables
+#   size    = 100
+# }
 
 

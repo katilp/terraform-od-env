@@ -42,24 +42,29 @@ provider "kubernetes" {
   cluster_ca_certificate = base64decode(data.google_container_cluster.my_cluster.master_auth[0].cluster_ca_certificate)
 }
 
-# resource "kubernetes_namespace" "workspace" {
-#   metadata {
-#     name = "od"
-#   }
-# }
+variable "namespace" {
+  default     = "argo"
+  description = "Kubernetes namespace"
+}
 
-# resource "kubernetes_cluster_role_binding" "argo-binding" {
-#   metadata {
-#     name = "cern-cms-cluster-admin-binding"
-#   }
-#   role_ref {
-#     api_group = "rbac.authorization.k8s.io"
-#     kind      = "ClusterRole"
-#     name      = "cluster-admin"
-#   }
-#   subject {
-#     kind      = "User"
-#     name      = "kati.lassila-perini@cern.ch"
-#     api_group = "rbac.authorization.k8s.io"
-#   }
-# }
+resource "kubernetes_namespace" "workspace" {
+  metadata {
+    name = var.namespace
+  }
+}
+
+resource "kubernetes_cluster_role_binding" "argo-binding" {
+  metadata {
+    name = "cern-cms-cluster-admin-binding"
+  }
+  role_ref {
+    api_group = "rbac.authorization.k8s.io"
+    kind      = "ClusterRole"
+    name      = "cluster-admin"
+  }
+  subject {
+    kind      = "User"
+    name      = "kati.lassila-perini@cern.ch"
+    api_group = "rbac.authorization.k8s.io"
+  }
+}

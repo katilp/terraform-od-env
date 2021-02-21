@@ -4,6 +4,7 @@ resource "kubernetes_deployment" "deployment_nfs_server" {
     #"kind" = "Deployment"
     metadata {
       name = "nfs-server"
+      namespace = var.namespace
     }
     spec {
       replicas = 1
