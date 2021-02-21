@@ -56,7 +56,21 @@ The persistent volume claim needs to be done separately in the cloud shell:
 
 This is because Terraform does not accept an empty string for the storage class name and assigns it to standard. Standard storage classes cannot be `ReadWriteMany`.
 
+To test, install argo and run the test workflow:
+ 
+  ```
+  cd ../test
+  ./argo-install.sh
+  argo submit -n argo argo-wf-volume.yaml
+  argo list -n argo
+  ```
+  
+Check the pod name in the `argo list -n argo` command output and see if the test file appears in the pod.
 
+  ```
+  kubectl logs pod/test-hostpath-XXXXX  -n argo main
+  ```
+   
 To clean up, one would the delete the resources in the both directories
 
   ```
