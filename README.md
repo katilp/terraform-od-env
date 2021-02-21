@@ -71,9 +71,10 @@ Check the pod name in the `argo list -n argo` command output and see if the test
   kubectl logs pod/test-hostpath-XXXXX  -n argo main
   ```
    
-To clean up, one would the delete the resources in the both directories
+To clean up, delete the resources in the directories in which Terraform commands were submitted:
 
   ```
+  cd ../manage-k8s-resources
   terraform destroy
   cd ../provision-gke-cluster
   terraform destroy
@@ -165,9 +166,10 @@ Create the persistent volume claim needs to be done separately from the local te
   
 Do the testing as indicated above.  
 
-Delete the resources in the both directories
+To clean up, delete the resources in the directories in which Terraform commands were submitted:
 
   ```
+  cd ../manage-k8s-resources
   terraform destroy
   cd ../provision-gke-cluster
   terraform destroy
