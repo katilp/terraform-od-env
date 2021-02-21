@@ -18,19 +18,21 @@ gcloud config set project cms-opendata
 ```
 The provisioning of of the Kubernetes cluster is taken care in the `provision-gke-cluster` directory.
 
-Initialise Terraform, check and apply the configurations.
+Initialise Terraform, check and apply the configurations:
 
   ```
-  cd terraform-od-env/provision-gke-cluster
+  cd provision-gke-cluster
   terraform init
   terraform plan 
   terraform apply
   ```
-Get credentials to the newly created cluster
+
+To be able to use kubectl commands in the cloud shell, get credentials to the newly created cluster:
 
   ```
   gcloud container clusters get-credentials cms-opendata-gke --zone europe-west6-a --project cms-opendata
   ```
+
 While in principle the disk could be created at this stage, in practice, it has to be done separately, by hand. Otherwise the deployments trying to access that disk fail. Creat the disk in the cloud shell:
 
   ```
