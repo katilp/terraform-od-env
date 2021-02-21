@@ -42,6 +42,15 @@ The kubernetes resources are managed separately in the `manage-k8s-resources` di
   terraform apply
   ```
   
+The persistent volume claim needs to be done separately in the cloud shell:
+
+  ```
+  kubectl apply -n argo -f pvc.yaml
+  ```
+
+This is because Terraform does not accept an empty string for the storage class name and assigns it to standard. Standard storage classes cannot be `ReadWriteMany`.
+
+
 To clean up, one would the delete the resources in the both directories
 
   ```
