@@ -6,6 +6,8 @@ The manual environment setup is documented in
 - the CMS Open data workshop [slides](https://indico.cern.ch/event/882586/contributions/4042623/attachments/2114732/3557845/Open_Data_on_Kubernetes.pdf)
 - in the cloud computing [tutorial](https://cms-opendata-workshop.github.io/workshop-lesson-kubernetes/)
 
+## Install
+
 Install Terraform (see the details in [the Terraform guide](https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started)):
 
   ```
@@ -16,8 +18,10 @@ Install Terraform (see the details in [the Terraform guide](https://learn.hashic
   terraform -install-autocomplete
   exec bash # restart shell
   ```
+## Cloud authentication
 
 Prerequisites for GCP (see the details in [the Terraform tutorial](https://learn.hashicorp.com/tutorials/terraform/gke?in=terraform/kubernetes#prerequisites)):
+
 - install gcloud (https://cloud.google.com/sdk/docs/quickstart#deb)
   ```
   echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
@@ -28,6 +32,7 @@ Prerequisites for GCP (see the details in [the Terraform tutorial](https://learn
 - initialise with your GCP credentials `gcloud init --console-only` and choose the project
 - authenticate `gcloud auth application-default login`
 
+## Apply the setup
 Download the Terraform configuration files for CMS OD environment from this repository
 
   ```
@@ -37,6 +42,8 @@ Download the Terraform configuration files for CMS OD environment from this repo
 The provisioning of of the Kubernetes cluster and the disk is taken care in the `provision-gke-cluster` directory. Before applying the Terraform configurations, two APIs need to be enabled on [the GPC console](https://console.cloud.google.com/):
 - Compute engine API
 - Kubernetes engine API (this has a cost of 0.10USD/hour)
+
+Initialise Terraform, check and apply the configurations.
 
   ```
   cd terraform-od-env/provision-gke-cluster
