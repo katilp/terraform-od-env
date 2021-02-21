@@ -11,6 +11,11 @@ The manual environment setup is documented in
 
 [![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://ssh.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/katilp/terraform-od-env.git)
 
+Confirm the repository and define the project in the cloud shell
+
+```
+gcloud config set project cms-opendata
+```
 
 
 ## Setup from a local terminal
