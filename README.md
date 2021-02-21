@@ -11,13 +11,38 @@ The manual environment setup is documented in
 
 [![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://ssh.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/katilp/terraform-od-env.git)
 
-Confirm the repository and define the project in the cloud shell
+Login with your GCP credentials and confirm the repository. Define the project in the cloud shell
 
 ```
 gcloud config set project cms-opendata
 ```
+The provisioning of of the Kubernetes cluster and the disk is taken care in the `provision-gke-cluster` directory.
 
+Initialise Terraform, check and apply the configurations.
 
+  ```
+  cd terraform-od-env/provision-gke-cluster
+  terraform init
+  terraform plan 
+  terraform apply
+  ```
+The kubernetes resources are managed separately in the `manage-k8s-resources` directory.
+
+  ```
+  cd ../manage-k8s-resources
+  terraform init
+  terraform plan
+  terraform apply
+  ```
+  
+To clean up, one would the delete the resources in the both directories
+
+  ```
+  terraform destroy
+  cd ../provision-gke-cluster
+  terraform destroy
+  ```
+  
 ## Setup from a local terminal
 
 ### Install
@@ -84,7 +109,7 @@ The kubernetes resources are managed separately in the `manage-k8s-resources` di
   terraform apply
   ```
   
-For the moment, the resource deployment fails, and the `nfs-server` workload needs to deleted manually.
+For the moment, the resource deployment fails because it does not find the disk, and the `nfs-server` workload needs to deleted manually.
 
 Normally, to clean up, one would the delete the resources in the both directories
 
