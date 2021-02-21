@@ -39,7 +39,7 @@ While in principle the disk could be created at this stage, in practice, it has 
   gcloud compute disks create --size=100GB --zone=europe-west6-a gce-nfs-disk
   ```
 
-The kubernetes resources are managed separately in the `manage-k8s-resources` directory.
+The kubernetes resources are managed separately in the `manage-k8s-resources` directory. Change the user name in `kubernetes.tf` before applying.
 
   ```
   cd ../manage-k8s-resources
@@ -148,7 +148,7 @@ Add the disk manually with
   gcloud compute disks create --size=100GB --zone=europe-west6-a gce-nfs-disk
   ```
 
-The kubernetes resources are managed separately in the `manage-k8s-resources` directory.
+The kubernetes resources are managed separately in the `manage-k8s-resources` directory. Chage the user name in `kubernetes.tf` before applying.
 
   ```
   cd ../manage-k8s-resources
