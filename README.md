@@ -56,10 +56,17 @@ The persistent volume claim needs to be done separately in the cloud shell:
 
 This is because Terraform does not accept an empty string for the storage class name and assigns it to standard. Standard storage classes cannot be `ReadWriteMany`.
 
+Apply the configuration again to set up the part which depend on the persistent volume claim:
+
+  ```
+  terraform apply
+  ```
+
 To test, install argo and run the test workflow:
  
   ```
   cd ../test
+  chmod +x argo-install.sh
   ./argo-install.sh
   argo submit -n argo argo-wf-volume.yaml
   argo list -n argo
