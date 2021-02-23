@@ -100,7 +100,6 @@ Install Terraform (see the details in [the Terraform guide](https://learn.hashic
   curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
   sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
   sudo apt-get update && sudo apt-get install terraform
-  terraform -help
   terraform -install-autocomplete
   exec bash # restart shell
   ```
